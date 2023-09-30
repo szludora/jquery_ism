@@ -7,7 +7,9 @@ class CsaladTabla {
     this.rendezesIrany = "asc";
     this.cella = this.szuloElem.find(".szulcella");
     this.cella.on("click", (event) => {
-      this.rendezTabla();
+      if (!$(event.target).hasClass("icon")) {
+        this.rendezTabla();
+      }
     });
   }
 
