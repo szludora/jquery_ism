@@ -2,16 +2,14 @@ class CsaladTabla {
   constructor(lista, szuloElem) {
     this.lista = lista;
     this.szuloElem = szuloElem;
-    const d = new Date();
-    this.ev = d.getFullYear();
     let txt = this.htmlOsszeallit(lista);
     this.szuloElem.append(txt);
   }
 
   htmlOsszeallit(lista) {
     let txt =
-      "<table><thead><td>Családtag</td><td>Vezetéknév</td><td>Keresztnév</td><td>Középső név</td>"+
-      "<td><span class='szul'>Születési év</span><img class='icon' src='https://icon-library.com/images/swap-icon-png/swap-icon-png-15.jpg'" +
+      "<table><thead><td>Családtag</td><td>Vezetéknév</td><td>Keresztnév</td><td>Középső név</td>" +
+      "<td class='szulcella'><span class='szulspan'>Születési év</span><img class='icon' src='https://icon-library.com/images/swap-icon-png/swap-icon-png-15.jpg'" +
       "nosend='1 alt='Line' title='Line'></td></thead>";
 
     for (let i = 0; i < lista.length; i++) {
@@ -25,9 +23,10 @@ class CsaladTabla {
       for (const kulcs in tag) {
         // a születési év előtt hozzáadja a cellát,  amennyiben szükséges
         if (kulcs == "szul") {
-          txt += `${plusz}`;
+          txt += `${plusz}<td class="szul">${tag[kulcs]}</td>`;
+        } else {
+          txt += `<td>${tag[kulcs]}</td>`;
         }
-        txt += `<td>${tag[kulcs]}</td>`;
       }
       // lenulláza a cellát, hogy ha nem szükséges, ne adjon hozzá üres cellát
       plusz = "";
