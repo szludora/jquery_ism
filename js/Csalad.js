@@ -4,6 +4,11 @@ class CsaladTabla {
     this.szuloElem = szuloElem;
     let txt = this.htmlOsszeallit(lista);
     this.szuloElem.append(txt);
+    this.rendezesIrany = "asc";
+    this.cella = this.szuloElem.find(".szulcella");
+    this.cella.on("click", (event) => {
+      this.rendezTabla();
+    });
   }
 
   htmlOsszeallit(lista) {
@@ -36,6 +41,27 @@ class CsaladTabla {
     txt += `</table>`;
 
     return txt;
+  }
+
+  rendezTabla() {
+    const tbody = this.szuloElem.find("table tbody");
+    const sorok = tbody.find("tr");
+
+    sorok.sort((a, b) => {
+      const elsoEv = parseInt($(a).find(".szul").text(), 10);
+      const masodikEv = parseInt($(b).find(".szul").text(), 10);
+
+      if (this.rendezesIrany === "asc") {
+        return elsoEv - masodikEv;
+      } else {
+        return masodikEv - elsoEv;
+      }
+    });
+
+    tbody.html(sorok);
+
+    // Rendezés irányának megfordítása a következő kattintáskor
+    this.rendezesIrany = this.rendezesIrany === "asc" ? "desc" : "asc";
   }
 }
 
