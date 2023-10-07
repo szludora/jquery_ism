@@ -33,12 +33,15 @@ class CsaladTabla {
       for (const kulcs in tag) {
         // a születési év előtt hozzáadja a cellát,  amennyiben szükséges
         if (kulcs == "szul") {
-          if (tag[kulcs] == ev){
+          if (tag[kulcs] == ev) {
             txt += `${plusz}<td class="szul baba">${tag[kulcs]}</td>`;
           } else {
             txt += `${plusz}<td class="szul">${tag[kulcs]}</td>`;
           }
         } else if (kulcs == "honap") {
+          // nem csinál semmit
+          txt += `<span class="honap rejtett">${tag[kulcs]}</span>`;
+        } else if (kulcs == "szoveg") {
           // nem csinál semmit
           txt += `<span class="honap rejtett">${tag[kulcs]}</span>`;
         } else if (kulcs == "nap") {

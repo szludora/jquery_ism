@@ -31,7 +31,6 @@ export const csaladTagok = [
     ker: "Klára",
     koz: "Mária",
     szul: 1952,
-  
   },
   {
     szer: "Papa",
@@ -58,5 +57,6 @@ export const csaladTagok = [
     szul: 2023,
     honap: 7,
     nap: 16,
+    szoveg: "hónapos",
   },
 ];
