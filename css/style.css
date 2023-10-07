@@ -33,3 +33,7 @@ td {
 .szulcella {
     position: relative;
 }
+
+.rejtett {
+  display: hidden;
+}
